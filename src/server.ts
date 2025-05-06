@@ -198,7 +198,7 @@ server.tool(
   }
 );
 server.tool(
-  'get location',
+  'get-location',
   'Get latitude and longitude from current location',
   {},
   async () => {

@@ -63,12 +63,15 @@ class McpClient {
 			// 如何是需要使用工具，就解析工具
 			for (const toolCall of content.message.tool_calls!) {
 				const toolName = toolCall.function.name;
-				const toolArgs = JSON.parse(toolCall.function.arguments);
+                const args = toolCall.function.arguments;
+				const toolArgs = typeof (args) === 'string' ?
+                  JSON.parse(args):
+                  args;
 
 				// 调用工具
 				const result = await this.mcp.callTool({
 					name: toolName,
-					arguments: toolArgs
+					arguments: toolArgs || {}
 				}) as {
                     content: Array<{
                         type: 'text',
