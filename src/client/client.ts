@@ -50,6 +50,7 @@ class McpClient {
         } else {
             messages = _messages;
         }
+        console.log('request',JSON.stringify(messages, null, 2))
         const completion = await client.chat.completions.create({
             model: config.model,
             messages: messages,
@@ -57,7 +58,7 @@ class McpClient {
             tool_choice: 'auto'
         });
         const content = completion.choices[0];
-        console.log('first',JSON.stringify(content, null, 2))
+        console.log('response',JSON.stringify(content, null, 2))
         messages.push(content.message);
         if (content.finish_reason === 'tool_calls') {
 			// 如何是需要使用工具，就解析工具

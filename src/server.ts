@@ -176,16 +176,16 @@ server.tool(
 
 
     // Format forecast periods
-    const nowWheather = [
+    const nowWeather = [
       `Current Time: ${now.obsTime}`,
       `Temperature: ${now.temp || "Unknown"}°`,
       `Wind: ${now.windScale || "Unknown"} ${now.windDir || ""}`,
       `${now.text || "No forecast available"}`,
-      "---",
+      // "---",
     ].join("\n");
 
 
-    const forecastText = `Forecast for ${latitude}, ${longitude}:\n\n${nowWheather}`;
+    const forecastText = `Forecast for ${latitude}, ${longitude}:\n\n${nowWeather}`;
 
     return {
       content: [
